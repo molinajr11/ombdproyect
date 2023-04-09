@@ -1,0 +1,48 @@
+﻿@model List<Movie>
+@{
+    ViewData["Title"] = "Movie Page";
+}
+
+
+@{
+    ViewData["Title"] = "";
+}
+
+<h1>@ViewData["Title"]</h1>
+<nav class="navbar navbar-light" style="background-color: #e3f2fd;">
+  <a class="navbar-brand">Search Movies</a>
+  <form class="form-inline">
+    <input class="form-control mr-sm-2" type="search" name="titleFilter" placeholder="Search" aria-label="Search" value="@ViewData["TitleFilter"]" >
+    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+  </form>
+</nav>
+<style>
+		body {
+			background-color:#94bbe9;
+		}
+</style>	
+   
+   @if(Model !=null && Model.Count > 0)
+{
+
+    @foreach (var item in Model)
+    {
+  <br />
+  <div class="card bg-dark text-white " style="width: 28rem;">
+  <img class="card-img-top" src=@item.Poster alt="Card image cap">
+  <div class="card-body">
+    <h5 class="card-title">@item.Title</h5>
+   
+  </div>
+  <ul class="list-group list-group-flush">
+    <li class="list-group-item"> Year: @item.Year</li>
+    <li class="list-group-item">ID: @item.imdbID</li>
+    <li class="list-group-item">Type: @item.Type</li>
+  </ul>
+    </div>
+   
+
+
+    }
+
+}
